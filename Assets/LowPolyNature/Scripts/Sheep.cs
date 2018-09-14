@@ -76,7 +76,7 @@ public class Sheep : MonoBehaviour
             return;
 
         // Only runaway if player is armed
-        bool isPlayerArmed = Player.GetComponent<PlayerController>().IsArmed;
+     /*   bool isPlayerArmed = Player.GetComponent<PlayerController>().IsArmed;
 
         // Performance optimization: Thx to kyl3r123 :-)
         float squaredDist = (transform.position - Player.transform.position).sqrMagnitude;
@@ -95,6 +95,6 @@ public class Sheep : MonoBehaviour
         }
 
         mAnimator.SetBool("walk", IsNavMeshMoving);
-
+        */
     }
 }
