@@ -1,0 +1,3 @@
+[submodule "Assets/VRTracker"]
+	path = Assets/VRTracker
+	url = https://github.com/VR-Tracker/Unity-Plugin.git
