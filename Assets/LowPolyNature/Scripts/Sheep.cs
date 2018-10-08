@@ -23,6 +23,9 @@ public class Sheep : MonoBehaviour
         mAgent = GetComponent<NavMeshAgent>();
 
         mAnimator = GetComponent<Animator>();
+
+        if(Player ==null)
+            Player = GameObject.FindWithTag("Player");
     }
 
     private bool IsNavMeshMoving
@@ -41,7 +44,7 @@ public class Sheep : MonoBehaviour
             // Hit by a weapon
             if(item.ItemType == EItemType.Weapon)
             {
-                if(Player.GetComponent<PlayerController>().IsAttacking)
+                /*if(Player.GetComponent<PlayerController>().IsAttacking)
                 {
                     mIsDead = true;
                     mAgent.enabled = false;
@@ -49,7 +52,7 @@ public class Sheep : MonoBehaviour
                     Destroy(GetComponent<Rigidbody>());
 
                     Invoke("ShowItemsDeadState", 1.2f);
-                }
+                }*/
             }
         }
     }
@@ -75,26 +78,30 @@ public class Sheep : MonoBehaviour
         if (mIsDead)
             return;
 
+
         // Only runaway if player is armed
-     /*   bool isPlayerArmed = Player.GetComponent<PlayerController>().IsArmed;
+     
+        bool isPlayerArmed = true;//Player.GetComponent<PlayerController>().IsArmed;
 
         // Performance optimization: Thx to kyl3r123 :-)
-        float squaredDist = (transform.position - Player.transform.position).sqrMagnitude;
-        float EnemyDistanceRunSqrt = EnemyDistanceRun * EnemyDistanceRun;
-
-        // Run away from player
-        if (squaredDist < EnemyDistanceRunSqrt && isPlayerArmed)
+        if (Player != null)
         {
-            // Vector player to me
-            Vector3 dirToPlayer = transform.position - Player.transform.position;
+            float squaredDist = (transform.position - Player.transform.position).sqrMagnitude;
+            float EnemyDistanceRunSqrt = EnemyDistanceRun * EnemyDistanceRun;
 
-            Vector3 newPos = transform.position + dirToPlayer;
+            // Run away from player
+            if (squaredDist < EnemyDistanceRunSqrt && isPlayerArmed)
+            {
+                // Vector player to me
+                Vector3 dirToPlayer = transform.position - Player.transform.position;
 
-            mAgent.SetDestination(newPos);
+                Vector3 newPos = transform.position + dirToPlayer;
 
+                mAgent.SetDestination(newPos);
+
+            }
         }
-
         mAnimator.SetBool("walk", IsNavMeshMoving);
-        */
+
     }
 }
