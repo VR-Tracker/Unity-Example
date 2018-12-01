@@ -36,3 +36,5 @@ sysinfo.txt
 *.unitypackage
 
 .DS_Store
+/Assets/DebugPositionFilter.meta
+/Assets/DebugPositionFilter
